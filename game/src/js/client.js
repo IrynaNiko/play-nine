@@ -6,6 +6,9 @@ import Game from "./components/Game";
 import Stars from "./components/Stars";
 import Button from "./components/Button";
 import Answer from "./components/Answer";
+import Numbers from "./components/Numbers";
+
+Numbers.list = _.range(1, 10);
 
 class App extends React.Component { 
     render() {
@@ -17,7 +20,9 @@ class App extends React.Component {
                 <Stars />
                 <Button />
                 <Answer />
-            </div>
+            </div>			
+            <br />
+            <Numbers />
         </div>
       );
     }
