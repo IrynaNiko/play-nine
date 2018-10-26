@@ -21,19 +21,24 @@ class App extends React.Component {
 			selectedNumbers: prevState.selectedNumbers.concat(clickedNumber)
 		}));
 	};
-	
+	unselectNumber = (clickedNumber) => {
+		this.setState (prevState => ({
+			selectedNumbers: prevState.selectedNumbers.filter(number=> number !== clickedNumber)
+		}));
+	} 	
     render() {
+	  const { selectedNumbers, randomNumOfStars } = this.state; 
       return (
         <div className="container">
             <Header />
             <hr />
             <div className="row">
-                <Stars numberOfStars={this.state.randomNumOfStars}/>
-                <Button />
-                <Answer selectedNumbers={this.state.selectedNumbers}/>
+                <Stars numberOfStars={randomNumOfStars}/>
+                <Button selectedNumbers={selectedNumbers}/>
+                <Answer selectedNumbers={selectedNumbers} unselectNumber={this.unselectNumber}/>
             </div>			
             <br />
-            <Numbers selectedNumbers={this.state.selectedNumbers}
+            <Numbers selectedNumbers={selectedNumbers}
 					selectNumber={this.selectNumber}/>
         </div>
       );
