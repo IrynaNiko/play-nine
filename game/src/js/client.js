@@ -13,7 +13,8 @@ Numbers.list = _.range(1, 10);
 class App extends React.Component { 
 	state = {
 		selectedNumbers: [],
-		randomNumOfStars: 1 + Math.floor(Math.random()*9)
+		randomNumOfStars: 1 + Math.floor(Math.random()*9),
+		answerCorrect: null,
 	};
 	selectNumber = (clickedNumber) => {
 		if(this.state.selectedNumbers.indexOf(clickedNumber) >= 0 ){return;}
@@ -26,22 +27,34 @@ class App extends React.Component {
 			selectedNumbers: prevState.selectedNumbers.filter(number=> number !== clickedNumber)
 		}));
 	} 	
+	checkAnswer = () => {		
+		this.setState(prevState => ({
+			answerIsCorrect: prevState.randomNumOfStars ===
+				prevState.selectedNumbers.reduce((acc, n) => acc + n, 0)
+		}));
+	};
     render() {
-	  const { selectedNumbers, randomNumOfStars } = this.state; 
-      return (
-        <div className="container">
-            <Header />
-            <hr />
-            <div className="row">
-                <Stars numberOfStars={randomNumOfStars}/>
-                <Button selectedNumbers={selectedNumbers}/>
-                <Answer selectedNumbers={selectedNumbers} unselectNumber={this.unselectNumber}/>
-            </div>			
-            <br />
-            <Numbers selectedNumbers={selectedNumbers}
-					selectNumber={this.selectNumber}/>
-        </div>
-      );
+			const { 
+				selectedNumbers, 
+				randomNumOfStars,
+				answerIsCorrect
+			} = this.state; 
+				return (
+					<div className="container">
+							<Header />
+							<hr />
+							<div className="row">
+									<Stars numberOfStars={randomNumOfStars}/>
+									<Button selectedNumbers={selectedNumbers}
+											checkAnswer={this.checkAnswer}
+											answerIsCorrect={answerIsCorrect}/>
+									<Answer selectedNumbers={selectedNumbers} unselectNumber={this.unselectNumber}/>
+							</div>			
+							<br />
+							<Numbers selectedNumbers={selectedNumbers}
+								selectNumber={this.selectNumber}/>
+					</div>
+				);
     }
   }
 
