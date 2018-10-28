@@ -5,7 +5,7 @@ const Button = (props) => {
 	switch(props.answerIsCorrect){
 		case true:
 			button = 
-				<button className="btn btn-success">
+				<button className="btn btn-success" onClick={props.acceptAnswer}>
 					<i className="fa fa-check"></i>
 				</button>;
 			break;
@@ -25,8 +25,13 @@ const Button = (props) => {
 			break;
 	};
     return (
-        <div className="col-2">
+        <div className="col-2 text-center">
 			{button}
+			<br /><br />
+			<button className="btn btn-warning btn-sm" onClick={props.redraw}
+				disabled={props.redraws === 0}>
+				<i className="fa fa-refresh"></i>{props.redraws}
+			</button>
         </div>
     );
 }

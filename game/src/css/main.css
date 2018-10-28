@@ -8,10 +8,18 @@ span {
     cursor: pointer; 
 }
 
-.container{
+.container {
 	margin-top: 20px;
 }
 
+.btn > span {
+    color: white;
+    background-color: #ffc107;
+    margin: 0;
+}
+.btn-warning > i {
+    color: white;
+}
 .fa-star {
     margin: 0.5em;
     font-size: 24px;
