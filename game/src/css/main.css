@@ -7,11 +7,9 @@ span {
     border-radius: 50%;
     cursor: pointer; 
 }
-
 .container {
 	margin-top: 20px;
 }
-
 .btn > span {
     color: white;
     background-color: #ffc107;
@@ -20,18 +18,17 @@ span {
 .btn-warning > i {
     color: white;
 }
-.fa-star {
+.fa.fa-star {
     margin: 0.5em;
-    font-size: 24px;
+    font-size: 1.3em;
 }
-
 .selected {
     background-color: #eee;
     color: #ddd;
     cursor: not-allowed;
 }
-
 .used {
     background-color: #aaddaa;
     color: #99bb99;
+    cursor: not-allowed;
 }

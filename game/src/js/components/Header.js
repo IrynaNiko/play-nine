@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-export default class Game extends React.Component { 
+export default class Header extends React.Component { 
   render() {
     return (
       <div>
-        <h3>Play Nine</h3>
+        <h2>Play Nine</h2>
+				<br />
       </div>
     );
   }
